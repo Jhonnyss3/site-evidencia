@@ -4,22 +4,25 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="bg-[#1a2b3f] text-white text-center pt-[150px] pb-[100px] font-sans"
+        className="relative w-full min-h-[500px] h-[80vh] flex items-end justify-center bg-[url('/banner.jpg')] bg-cover bg-center font-sans overflow-hidden"
       >
-        <div className="max-w-[1200px] mx-auto px-8">
-          <h1 className="text-5xl mb-4 font-bold">Soluções Contábeis Completas</h1>
-          <p className="text-lg mb-8 font-normal">
-            Expertise e confiança para o crescimento do seu negócio
+        {/* Conteúdo centralizado na parte de baixo */}
+        <div className="relative z-10 w-full max-w-[1200px] px-8 pb-16 flex flex-col items-center text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
+            Evidência Assessoria Contábil
+          </h1>
+          <p className="text-lg md:text-2xl text-white mb-8 font-normal drop-shadow">
+            Expertise e Inovação para sua Empresa
           </p>
           <a
             href="#contact"
-            className="bg-[#da412c] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#c13625]"
+            className="relative bg-[#da412c] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#c13625] shadow-lg
+              after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white
+              after:transition-all after:duration-300 hover:after:w-3/4"
+            style={{ overflow: 'hidden' }}
           >
             Fale Conosco
           </a>
-          <div className="w-full h-[300px] bg-[#f0f0f0] my-12 rounded-lg flex items-center justify-center text-[#666] text-lg font-medium">
-            [BANNER PRINCIPAL - 1200x300px]
-          </div>
         </div>
       </section>
 
