@@ -30,57 +30,61 @@ export default function Home() {
       <section id="about" className="bg-white py-20 font-sans">
         <div className="max-w-[1200px] mx-auto px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-[#1a2b3f] text-4xl mb-4 font-bold">Sobre Nós</h2>
+            {/* Texto */}
+            <div className="flex flex-col justify-center h-full">
+              <h2 className="text-[#1a2b3f] text-4xl mb-4 font-bold">Sobre a Evidência Assessoria Contábil</h2>
               <p className="mb-4 text-base text-[#1a2b3f] font-normal">
-                Com mais de X anos de experiência no mercado, nossa contabilidade oferece soluções personalizadas para empresas de todos os portes.
+                Com ampla experiência no mercado, a Evidência Assessoria Contábil alia conhecimento técnico e inovação para entregar soluções contábeis sob medida para empresas de todos os portes e setores.
               </p>
               <p className="mb-4 text-base text-[#1a2b3f] font-normal">
-                Nossa missão é proporcionar tranquilidade e segurança jurídica para que você possa focar no que realmente importa: o crescimento do seu negócio.
-              </p>
-              <p className="mb-4 text-base text-[#1a2b3f] font-normal">
-                Contamos com uma equipe especializada e atualizada com as mais recentes mudanças na legislação.
+                Nosso foco é facilitar a gestão financeira e contábil, proporcionando clareza e segurança para que você dedique seu tempo ao crescimento do negócio.
               </p>
             </div>
-            <div className="w-full h-[400px] bg-[#f0f0f0] rounded-lg flex items-center justify-center text-[#666] font-medium">
-              [IMAGEM SOBRE - 500x400px]
+            {/* Imagem ocupa 100% da coluna */}
+            <div className="w-full h-[300px] md:h-[400px] flex items-stretch">
+              <img
+                src="/about.jpg"
+                alt="Sobre a Evidência Assessoria Contábil"
+                className="w-full h-full object-cover rounded-lg shadow-lg"
+                style={{ maxHeight: 400 }}
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="bg-[#f8f9fa] py-20 font-sans">
+      <section id="services" className="bg-[#1a2b3f] py-20 font-sans">
         <div className="max-w-[1200px] mx-auto px-8">
-          <h2 className="text-center text-[#1a2b3f] text-4xl mb-12 font-bold">Nossos Serviços</h2>
+          <h2 className="text-center text-white text-4xl mb-12 font-bold">Nossos Serviços Contábeis</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">
                 📊
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Contabilidade</h3>
-              <p className="text-gray-600 font-normal">Escrituração contábil completa, balanços e demonstrações financeiras.</p>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Contabilidade Completa</h3>
+              <p className="text-gray-600 font-normal">Escrituração contábil, balanços patrimoniais e relatórios gerenciais para decisões estratégicas.</p>
             </div>
             <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">
                 📋
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Fiscal</h3>
-              <p className="text-gray-600 font-normal">Apuração de impostos, obrigações acessórias e planejamento tributário.</p>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Fiscal e Tributário</h3>
+              <p className="text-gray-600 font-normal">Apuração de impostos, planejamento tributário e entrega de obrigações acessórias com eficiência.</p>
             </div>
             <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">
                 👥
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Trabalhista</h3>
-              <p className="text-gray-600 font-normal">Folha de pagamento, admissões, demissões e obrigações trabalhistas.</p>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Trabalhista e Folha de Pagamento</h3>
+              <p className="text-gray-600 font-normal">Gestão de admissões, demissões, folha e obrigações trabalhistas com precisão e compliance.</p>
             </div>
             <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">
                 💡
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Consultoria</h3>
-              <p className="text-gray-600 font-normal">Orientação empresarial, análise de viabilidade e consultoria estratégica.</p>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Consultoria Empresarial</h3>
+              <p className="text-gray-600 font-normal">Análise de viabilidade, planejamento estratégico e suporte para expansão do negócio.</p>
             </div>
           </div>
         </div>
