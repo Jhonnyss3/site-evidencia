@@ -2,7 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset básico, pode ser removido se preferir usar só o Tailwind */
+/* Fontes customizadas Effra */
+@font-face {
+  font-family: 'Effra';
+  src: url('/fonts/Effra.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Effra';
+  src: url('/fonts/Effra-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Effra';
+  src: url('/fonts/Effra-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -12,5 +35,4 @@
 /* Fonte padrão e cor do texto */
 body {
   @apply font-sans text-[#1a2b3f] leading-relaxed;
-  font-family: 'Arial', sans-serif; /* fallback para Arial */
 }
