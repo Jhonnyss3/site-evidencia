@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import './globals.css';
 import Image from 'next/image';
 
@@ -27,56 +26,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </div>
             <ul className="flex list-none bg-transparent">
-              <li className="relative ml-8 group px-2">
-                <a
-                  href="#home"
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Início
-                </a>
-              </li>
-              <li className="relative ml-8 group px-2">
-                <a
-                  href="#about"
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Sobre
-                </a>
-              </li>
-              <li className="relative ml-8 group px-2">
-                <a
-                  href="#services"
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Serviços
-                </a>
-              </li>
-              <li className="relative ml-8 group px-2">
-                <a
-                  href="#team"
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Equipe
-                </a>
-              </li>
-              <li className="relative ml-8 group px-2">
-                <a
-                  href="#contact"
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  Contato
-                </a>
-              </li>
+              {[
+                { href: "#home", label: "Início" },
+                { href: "#about", label: "Sobre" },
+                { href: "#services", label: "Serviços" },
+                { href: "#team", label: "Equipe" },
+                { href: "#contact", label: "Contato" },
+              ].map((item) => (
+                <li key={item.href} className="relative ml-8 group px-2">
+                  <a
+                    href={item.href}
+                    className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block
+                      after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
+                      after:transition-all after:duration-300 group-hover:after:w-full hover:after:w-full"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         </header>
