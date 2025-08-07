@@ -1,103 +1,113 @@
-import Image from "next/image";
-
+// src/app/page.tsx
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <section id="home" className="hero">
+        <div className="container">
+          <h1>Soluções Contábeis Completas</h1>
+          <p>Expertise e confiança para o crescimento do seu negócio</p>
+          <a href="#contact" className="cta-button">Fale Conosco</a>
+          <div className="hero-banner">
+            [BANNER PRINCIPAL - 1200x300px]
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="about">
+        <div className="container">
+          <div className="about-content">
+            <div className="about-text">
+              <h2>Sobre Nós</h2>
+              <p>Com mais de X anos de experiência no mercado, nossa contabilidade oferece soluções personalizadas para empresas de todos os portes.</p>
+              <p>Nossa missão é proporcionar tranquilidade e segurança jurídica para que você possa focar no que realmente importa: o crescimento do seu negócio.</p>
+              <p>Contamos com uma equipe especializada e atualizada com as mais recentes mudanças na legislação.</p>
+            </div>
+            <div className="about-image">
+              [IMAGEM SOBRE - 500x400px]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="services">
+        <div className="container">
+          <h2>Nossos Serviços</h2>
+          <div className="services-grid">
+            <div className="service-card">
+              <div className="service-icon">📊</div>
+              <h3>Contabilidade</h3>
+              <p>Escrituração contábil completa, balanços e demonstrações financeiras.</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">📋</div>
+              <h3>Fiscal</h3>
+              <p>Apuração de impostos, obrigações acessórias e planejamento tributário.</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">👥</div>
+              <h3>Trabalhista</h3>
+              <p>Folha de pagamento, admissões, demissões e obrigações trabalhistas.</p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">💡</div>
+              <h3>Consultoria</h3>
+              <p>Orientação empresarial, análise de viabilidade e consultoria estratégica.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section id="team" className="team">
+        <div className="container">
+          <h2>Nossa Equipe</h2>
+          <div className="team-leader">
+            <div className="team-member">
+              <div className="member-photo">[FOTO 200x200px]</div>
+              <h3>Nome do Contador Responsável</h3>
+              <p>CRC: XXXXX</p>
+              <p>Contador Responsável</p>
+            </div>
+          </div>
+          <div className="team-grid">
+            {/* Repita para cada membro */}
+            {[...Array(9)].map((_, i) => (
+              <div className="team-member" key={i}>
+                <div className="member-photo">[FOTO 200x200px]</div>
+                <h3>Nome {i + 1}</h3>
+                <p>Cargo</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2>Fale com a nossa equipe</h2>
+          <p className="contact-description">
+            Atendimento rápido e personalizado pelo WhatsApp. Clique no botão abaixo e tire suas dúvidas!
+          </p>
+          <a
+            href="https://wa.me/5524999999999?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade."
+            className="whatsapp-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="whatsapp-icon">📱</span>
+            Conversar pelo WhatsApp
+          </a>
+          <div className="contact-info-simple">
+            <span>Rua Exemplo, 123 - Volta Redonda/RJ</span> |
+            <span>(24) 3333-4444</span> |
+            <span>contato@contabilidade.com.br</span>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
