@@ -4,7 +4,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative w-full min-h-[500px] h-[80vh] flex items-end justify-center bg-[url('/banner.jpg')] bg-cover bg-center font-sans overflow-hidden"
+        className="relative w-full min-h-[500px] h-[80vh] flex items-end justify-center bg-[url('/banner.png')] bg-cover bg-center font-sans overflow-hidden"
       >
         {/* Conteúdo centralizado na parte de baixo */}
         <div className="relative z-10 w-full max-w-[1200px] px-8 pb-16 flex flex-col items-center text-center">
