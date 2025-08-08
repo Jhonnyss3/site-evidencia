@@ -90,6 +90,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SAC Section */}
+      <section id="sac" className="bg-[#f8f9fa] py-20 font-sans">
+        <div className="max-w-[900px] mx-auto px-8">
+          <h2 className="text-center text-[#1a2b3f] text-4xl mb-12 font-bold">Perguntas Frequentes (FAQ)</h2>
+          <div className="space-y-8">
+            {/* Pergunta 1 */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-[#da412c] text-xl font-bold mb-2">Quais serviços a Evidência Assessoria Contábil oferece?</h3>
+              <p className="text-[#1a2b3f] text-base font-normal">
+                Oferecemos contabilidade completa, consultoria empresarial, gestão fiscal, folha de pagamento, planejamento tributário e muito mais para empresas de todos os portes.
+              </p>
+            </div>
+            {/* Pergunta 2 */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-[#da412c] text-xl font-bold mb-2">Atendem empresas de fora de Volta Redonda?</h3>
+              <p className="text-[#1a2b3f] text-base font-normal">
+                Sim! Atendemos clientes de toda a região e também de outros estados, com atendimento digital e presencial.
+              </p>
+            </div>
+            {/* Pergunta 3 */}
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-[#da412c] text-xl font-bold mb-2">Como funciona o atendimento pelo WhatsApp?</h3>
+              <p className="text-[#1a2b3f] text-base font-normal">
+                Nosso atendimento via WhatsApp é rápido, personalizado e sem burocracia. Basta clicar no botão de contato e falar diretamente com nossa equipe.
+              </p>
+            </div>
+            {/* Adicione mais perguntas conforme necessário */}
+          </div>
+        </div>
+      </section>
+
       {/* Team Section */}
       <section id="team" className="py-20 font-sans">
         <div className="max-w-[1200px] mx-auto px-8">
