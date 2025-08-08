@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 { href: "#home", label: "Início" },
                 { href: "#about", label: "Sobre" },
                 { href: "#services", label: "Serviços" },
+                { href: "#sac", label: "FAQ" },
                 { href: "#team", label: "Equipe" },
                 { href: "#contact", label: "Contato" },
               ].map((item) => (

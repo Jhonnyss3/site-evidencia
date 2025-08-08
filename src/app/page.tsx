@@ -127,22 +127,43 @@ export default function Home() {
           <h2 className="text-center text-[#1a2b3f] text-4xl mb-12 font-bold">Nossa Equipe</h2>
           <div className="flex justify-center mb-12">
             <div className="max-w-[250px] bg-[#f8f9fa] rounded-lg p-8 shadow-md text-center">
-              <div className="w-[200px] h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center text-[#666] text-base object-cover overflow-hidden font-medium">
-                [FOTO 200x200px]
+              <div className="w-[200px] h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img
+                  src="/marcelo_logo.png"
+                  alt="Contador Responsável"
+                  className="w-full h-full object-cover"
+                  style={{ maxWidth: 200, maxHeight: 200 }}
+                />
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Nome do Contador Responsável</h3>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Marcelo Carvalho</h3>
               <p className="text-gray-600 font-normal">CRC: XXXXX</p>
               <p className="text-gray-600 font-normal">Contador Responsável</p>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(9)].map((_, i) => (
-              <div className="max-w-[250px] bg-[#f8f9fa] rounded-lg p-8 shadow-md text-center mx-auto" key={i}>
-                <div className="w-[200px] h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center text-[#666] text-base object-cover overflow-hidden font-medium">
-                  [FOTO 200x200px]
+              <div
+                className="max-w-[250px] bg-[#f8f9fa] rounded-lg p-8 shadow-md text-center mx-auto"
+                key={i}
+              >
+                <div className="w-[200px] h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                  {i === 0 ? (
+                    <img
+                      src="/fabio_logo.png"
+                      alt="Fábio - Equipe"
+                      className="w-full h-full object-cover"
+                      style={{ maxWidth: 200, maxHeight: 200 }}
+                    />
+                  ) : (
+                    <span className="text-[#666] text-base font-medium">[FOTO 200x200px]</span>
+                  )}
                 </div>
-                <h3 className="font-bold mb-2 text-[#1a2b3f]">Nome {i + 1}</h3>
-                <p className="text-gray-600 font-normal">Cargo</p>
+                <h3 className="font-bold mb-2 text-[#1a2b3f]">
+                  {i === 0 ? "Fábio Silva" : `Nome ${i + 1}`}
+                </h3>
+                <p className="text-gray-600 font-normal">
+                  {i === 0 ? "Diretor Financeiro" : "Cargo"}
+                </p>
               </div>
             ))}
           </div>
