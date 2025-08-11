@@ -6,10 +6,10 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section com parallax (bg-fixed em md+) */}
       <section
         id="home"
-        className="relative w-full min-h-[500px] h-[80vh] flex items-end justify-center bg-[url('/banner.png')] bg-cover bg-center font-sans overflow-hidden"
+        className="relative w-full min-h-[500px] h-[80vh] flex items-end justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
       >
         <div className="relative z-10 w-full max-w-[1200px] px-8 pb-16 flex flex-col items-center text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg">
@@ -64,12 +64,12 @@ export default function Home() {
               <h3 className="font-bold mb-2 text-[#1a2b3f]">Fiscal e Tributário</h3>
               <p className="text-gray-600 font-normal">Apuração de impostos, planejamento tributário e entrega de obrigações acessórias com eficiência.</p>
             </div>
-            <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
+            <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duração-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">👥</div>
               <h3 className="font-bold mb-2 text-[#1a2b3f]">Trabalhista e Folha de Pagamento</h3>
               <p className="text-gray-600 font-normal">Gestão de admissões, demissões, folha e obrigações trabalhistas com precisão e compliance.</p>
             </div>
-            <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
+            <div className="bg-white p-8 rounded-lg text-center shadow-lg transition-transform duração-300 hover:-translate-y-1">
               <div className="w-20 h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-2xl">💡</div>
               <h3 className="font-bold mb-2 text-[#1a2b3f]">Consultoria Empresarial</h3>
               <p className="text-gray-600 font-normal">Análise de viabilidade, planejamento estratégico e suporte para expansão do negócio.</p>
@@ -147,15 +147,15 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section com imagem de fundo */}
+      {/* Contact Section com parallax (bg-fixed em md+) */}
       <section
         id="contact"
-        className="relative text-white text-center py-20 font-sans bg-[url('/contact_bg.png')] bg-cover bg-center"
+        className="relative text-white text-center py-20 font-sans bg-[url('/contact_bg.png')] bg-cover bg-center md:bg-fixed overflow-hidden"
       >
         {/* Overlay para leitura */}
         <div className="absolute inset-0 bg-[#1a2b3f]/80"></div>
 
-        <div className="relative max-w-[1200px] mx-auto px-8">
+        <div className="relative max-w-[1200px] mx-auto px-8 z-10">
           <h2 className="text-4xl mb-4 font-bold">Fale com a nossa equipe</h2>
           <p className="text-base mb-10 font-normal">
             Atendimento rápido e personalizado pelo WhatsApp. Clique no botão abaixo e tire suas dúvidas!
