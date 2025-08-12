@@ -186,9 +186,9 @@ export default function Home() {
         <div className="absolute inset-0 bg-[#1a2b3f]/80"></div>
 
         <div className="relative w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 z-10">
-          <h2 className="text-3xl md:text-4xl mb-4 font-bold">Fale com a nossa equipe</h2>
+          <h2 className="text-3xl md:text-4xl mb-4 font-bold">Entre em Contato</h2>
           <p className="text-sm sm:text-base mb-8 md:mb-10 font-normal">
-            Atendimento rápido e personalizado pelo WhatsApp. Clique no botão abaixo e tire suas dúvidas!
+            Converse com a Evidência Assessoria Contábil e descubra como podemos simplificar sua rotina contábil e impulsionar seus resultados.
           </p>
           <a
             href="https://wa.me/5524999999999?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade."
