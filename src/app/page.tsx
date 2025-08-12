@@ -4,6 +4,11 @@ export default function Home() {
     "after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white " +
     "after:transition-all after:duration-300 hover:after:w-3/4";
 
+  // WhatsApp config (usar api.whatsapp.com para garantir que o texto seja enviado)
+  const phone = "5524974012116"; // sem o sinal de +
+  const defaultMsg = "Olá, eu quero assessoria contábil!";
+  const wppLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(defaultMsg)}`;
+
   return (
     <>
       {/* Hero Section com parallax (bg-fixed em md+) */}
@@ -21,7 +26,13 @@ export default function Home() {
           <p className="text-base sm:text-lg md:text-2xl text-white mb-6 md:mb-8 font-normal drop-shadow">
             Expertise e Inovação para sua Empresa
           </p>
-          <a href="#contact" className={`${ctaButton} w-full sm:w-auto text-center`} style={{ overflow: 'hidden' }}>
+          <a
+            href={wppLink}
+            className={`${ctaButton} w-full sm:w-auto text-center`}
+            style={{ overflow: 'hidden' }}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Fale Conosco
           </a>
         </div>
@@ -86,7 +97,7 @@ export default function Home() {
                 Gestão de admissões, demissões, folha e obrigações trabalhistas com precisão e compliance.
               </p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
+            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duração-300 hover:-translate-y-1">
               <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
                 💡
               </div>
@@ -103,7 +114,7 @@ export default function Home() {
       <section id="sac" aria-label="Perguntas Frequentes" className="bg-[#f8f9fa] py-16 md:py-20 font-sans">
         <div className="w-full max-w-[900px] mx-auto px-4 sm:px-6 md:px-8">
           <h2 className="text-center text-[#1a2b3f] text-3xl md:text-4xl mb-8 md:mb-12 font-bold">Perguntas Frequentes (FAQ)</h2>
-          <div className="space-y-6 md:space-y-8">
+        <div className="space-y-6 md:space-y-8">
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Quais serviços a Evidência Assessoria Contábil oferece?</h3>
               <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
@@ -191,7 +202,7 @@ export default function Home() {
             Converse com a Evidência Assessoria Contábil e descubra como podemos simplificar sua rotina contábil e impulsionar seus resultados.
           </p>
           <a
-            href="https://wa.me/5524999999999?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade."
+            href={wppLink}
             className={`${ctaButton} w-full sm:w-auto`}
             style={{ overflow: 'hidden' }}
             target="_blank"
