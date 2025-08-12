@@ -1,4 +1,5 @@
 "use client";
+
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
@@ -11,107 +12,147 @@ const MENU_ITEMS = [
   { href: "#contact", label: "Contato" },
 ];
 
-function MenuSanduiche({ open, setOpen, visible }: { open: boolean, setOpen: (v: boolean) => void, visible: boolean }) {
-  return (
-    <div
-      className={`
-        fixed top-6 left-6 z-[1100]
-        transition-all duration-500
-        ${visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}
-      `}
-    >
-      <button
-        className="flex flex-col justify-center items-center w-12 h-12 bg-[#da412c] rounded-full shadow-lg focus:outline-none"
-        onClick={() => setOpen(!open)}
-        aria-label="Abrir menu"
-      >
-        <span className="block w-6 h-1 bg-white mb-1 rounded transition-all duration-300" />
-        <span className="block w-6 h-1 bg-white mb-1 rounded transition-all duration-300" />
-        <span className="block w-6 h-1 bg-white rounded transition-all duration-300" />
-      </button>
-      {open && (
-        <div className="absolute top-14 left-0 bg-white rounded-xl shadow-2xl py-6 px-8 min-w-[220px]">
-          <ul>
-            {MENU_ITEMS.map((item) => (
-              <li key={item.href} className="mb-3 last:mb-0">
-                <a
-                  href={item.href}
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block font-medium text-lg
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 group-hover:after:w-full hover:after:w-full"
-                  onClick={() => setOpen(false)}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
-}
-
 export default function Header() {
-  const [showSanduiche, setShowSanduiche] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [showHeroMenu, setShowHeroMenu] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showFloatingMenu, setShowFloatingMenu] = useState(false);
+  const [floatingMenuOpen, setFloatingMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.8 - 80) {
-        setShowSanduiche(true);
-        setShowHeroMenu(false);
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.8; // quando passar ~80% da hero
+      if (window.scrollY > threshold) {
+        setShowFloatingMenu(true);
+        setMobileMenuOpen(false); // garante que o dropdown feche
       } else {
-        setShowSanduiche(false);
-        setShowHeroMenu(true);
-        setMenuOpen(false);
+        setShowFloatingMenu(false);
+        setFloatingMenuOpen(false);
       }
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
     <>
-      {/* Menu da hero com transição */}
+      {/* Header principal: transparente no topo; some completamente após scroll */}
       <header
-        className={`
-          bg-transparent py-4 fixed w-full top-0 z-[1000] transition-all duration-500
-          ${showHeroMenu ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-4 pointer-events-none'}
-        `}
+        className={[
+          "fixed w-full top-0 z-50 transition-all duration-300",
+          // Transparente no topo
+          "bg-transparent border-b border-transparent",
+          // Quando o sanduíche flutuante estiver visível, header some
+          showFloatingMenu
+            ? "opacity-0 -translate-y-4 pointer-events-none"
+            : "opacity-100 translate-y-0 pointer-events-auto",
+        ].join(" ")}
       >
-        <nav className="max-w-[1200px] mx-auto flex justify-between items-center px-8 bg-transparent">
-          <div className="px-5 py-2">
-            <a href="#home" aria-label="Ir para o topo">
+        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <a href="#home" aria-label="Ir para o início">
               <Image
                 src="/logo.png"
                 alt="Logo Evidência"
                 width={160}
                 height={40}
-                className="h-10 w-auto"
+                className="h-8 sm:h-10 w-auto"
                 priority
               />
             </a>
           </div>
-          <ul className="flex list-none bg-transparent">
+
+          {/* Navegação desktop (visível apenas enquanto o header estiver no topo) */}
+          <nav className="hidden md:flex items-center gap-6">
             {MENU_ITEMS.map((item) => (
-              <li key={item.href} className="relative ml-8 group px-2">
-                <a
-                  href={item.href}
-                  className="relative text-[#da412c] no-underline py-2 rounded transition-all duration-300 inline-block font-medium text-lg
-                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[3px] after:bg-[#da412c]
-                    after:transition-all after:duration-300 group-hover:after:w-full hover:after:w-full"
-                >
-                  {item.label}
-                </a>
-              </li>
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-[#1a2b3f] hover:text-[#da412c] transition-colors font-medium text-sm lg:text-base"
+              >
+                {item.label}
+              </a>
             ))}
-          </ul>
-        </nav>
+          </nav>
+
+          {/* Botão mobile (visível apenas enquanto o header estiver no topo) */}
+          <button
+            className="md:hidden p-2 rounded-md text-[#1a2b3f] hover:bg-white/20"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Abrir menu"
+            aria-expanded={mobileMenuOpen}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Dropdown mobile (só aparece enquanto o header está visível no topo) */}
+        <div
+          className={[
+            "md:hidden overflow-hidden transition-all duration-300",
+            mobileMenuOpen ? "max-h-96" : "max-h-0",
+          ].join(" ")}
+        >
+          <nav className="px-4 pb-4 space-y-2 bg-white/95 backdrop-blur-sm border-t border-gray-100">
+            {MENU_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block px-3 py-2 rounded-md text-[#1a2b3f] hover:bg-gray-100 hover:text-[#da412c] transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </div>
       </header>
-      {/* Menu sanduíche com transição */}
-      <MenuSanduiche open={menuOpen} setOpen={setMenuOpen} visible={showSanduiche} />
+
+      {/* Menu sanduíche flutuante: aparece para mobile e desktop após scroll */}
+      <div
+        className={[
+          "fixed top-6 left-6 z-[60] transition-all duration-300",
+          showFloatingMenu
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-4 pointer-events-none",
+        ].join(" ")}
+      >
+        <button
+          className="w-12 h-12 bg-[#da412c] rounded-full shadow-lg flex items-center justify-center"
+          onClick={() => setFloatingMenuOpen(!floatingMenuOpen)}
+          aria-label="Menu flutuante"
+          aria-expanded={floatingMenuOpen}
+        >
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth="2">
+            {floatingMenuOpen ? (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
+
+        {floatingMenuOpen && (
+          <div className="absolute top-14 left-0 bg-white rounded-xl shadow-2xl py-4 px-6 min-w-[200px]">
+            {MENU_ITEMS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block py-2 text-[#da412c] hover:text-[#c13625] font-medium transition-colors"
+                onClick={() => setFloatingMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     </>
   );
 }

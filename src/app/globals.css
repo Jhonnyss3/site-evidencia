@@ -32,7 +32,24 @@
   box-sizing: border-box;
 }
 
-/* Fonte padrão e cor do texto */
+/* Fonte padrão, cor e suavização */
 body {
-  @apply font-sans text-[#1a2b3f] leading-relaxed;
+  @apply font-sans text-[#1a2b3f] leading-relaxed bg-white antialiased;
+}
+
+/* Comportamento de rolagem suave (fallback) */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Mídias fluidas */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
