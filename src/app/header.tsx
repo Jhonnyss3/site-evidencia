@@ -68,7 +68,9 @@ export default function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="text-[#1a2b3f] hover:text-[#da412c] transition-colors font-medium text-sm lg:text-base"
+                className="relative text-[#1a2b3f] hover:text-[#da412c] transition-colors font-medium text-sm lg:text-base
+                           after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-[#da412c]
+                           after:w-0 after:transition-all after:duration-300 hover:after:w-full"
               >
                 {item.label}
               </a>
@@ -140,16 +142,22 @@ export default function Header() {
 
         {floatingMenuOpen && (
           <div className="absolute top-14 left-0 bg-white rounded-xl shadow-2xl py-4 px-6 min-w-[200px]">
-            {MENU_ITEMS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block py-2 text-[#da412c] hover:text-[#c13625] font-medium transition-colors"
-                onClick={() => setFloatingMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+            <ul className="flex flex-col space-y-1">
+              {MENU_ITEMS.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    // underline animado limitado ao tamanho do texto, cada item em sua própria linha
+                    className="relative inline-block py-2 text-[#da412c] hover:text-[#c13625] font-medium transition-colors
+                               after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-[#da412c]
+                               after:w-0 after:transition-all after:duration-300 hover:after:w-full"
+                    onClick={() => setFloatingMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>
