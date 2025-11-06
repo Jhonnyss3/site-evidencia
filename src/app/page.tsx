@@ -45,12 +45,12 @@ export default function Home() {
             <div className="flex flex-col justify-center h-full">
               <h2 className="text-[#1a2b3f] text-3xl md:text-4xl mb-4 font-bold">Sobre a Evidência Assessoria Contábil</h2>
               <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal">
-                Com ampla experiência no mercado, a Evidência Assessoria Contábil alia conhecimento técnico e inovação
-                para entregar soluções contábeis sob medida para empresas de todos os portes e setores.
+                Com experiência no mercado, a Evidência Assessoria Contábil alia conhecimento técnico e inovação 
+                para entregar soluções contábeis e gerencias sob medida para empresas de todos os seguimentos.
               </p>
               <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal">
-                Nosso foco é facilitar a gestão financeira e contábil, proporcionando clareza e segurança para que você
-                dedique seu tempo ao crescimento do negócio.
+                Nosso foco é estruturar sua escrita contábil, fortalecendo  a gestão financeira para a tomada de decisão , 
+                proporcionando clareza e segurança para que você dedique seu tempo ao crescimento do negócio.
               </p>
             </div>
             <div className="w-full h-[220px] sm:h-[280px] md:h-[400px] flex items-stretch">
@@ -74,7 +74,7 @@ export default function Home() {
               <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
                 📊
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Contabilidade Completa</h3>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Contábil</h3>
               <p className="text-gray-600 font-normal text-sm md:text-base">
                 Escrituração contábil, balanços patrimoniais e relatórios gerenciais para decisões estratégicas.
               </p>
@@ -92,18 +92,18 @@ export default function Home() {
               <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
                 👥
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Trabalhista e Folha de Pagamento</h3>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Gestão do funcionário</h3>
               <p className="text-gray-600 font-normal text-sm md:text-base">
-                Gestão de admissões, demissões, folha e obrigações trabalhistas com precisão e compliance.
+                Admissões, Demissões, folha e obrigações trabalhistas recrutamento e seleção de pessoal , treinamento , entrevista com orientação para as melhores praticas e compliance.
               </p>
             </div>
             <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duração-300 hover:-translate-y-1">
               <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
                 💡
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Consultoria Empresarial</h3>
+              <h3 className="font-bold mb-2 text-[#1a2b3f]">Gestão Gerencial</h3>
               <p className="text-gray-600 font-normal text-sm md:text-base">
-                Análise de viabilidade, planejamento estratégico e suporte para expansão do negócio.
+                Análise de viabilidade, planejamento estratégico , analise de relatório gerencial e suporte para expansão do negócio.
               </p>
             </div>
           </div>
@@ -175,18 +175,25 @@ export default function Home() {
                 <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
                   {i === 0 ? (
                     <img src="/fabio_logo.png" alt="Fábio - Equipe" className="w-full h-full object-cover" />
+                  ) : i === 1 ? (
+                    <img src="/jaqueline_logo.png" alt="Jaqueline - Equipe" className="w-full h-full object-cover" />
+                  ) : i === 2 ? (
+                    <img src="/andre_logo.png" alt="André - Equipe" className="w-full h-full object-cover" />
                   ) : (
                     <span className="text-[#666] text-sm md:text-base font-medium">[FOTO 200x200px]</span>
                   )}
                 </div>
-                <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">{i === 0 ? 'Fábio Silva' : `Nome ${i + 1}`}</h3>
-                <p className="text-gray-600 font-normal text-sm md:text-base">{i === 0 ? 'Diretor Financeiro' : 'Cargo'}</p>
+                <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">
+                  {i === 0 ? 'Fábio Silva' : i === 1 ? 'Jaqueline Ezídio' : i === 2 ? 'André Calcagno' : `Nome ${i + 1}`}
+                </h3>
+                <p className="text-gray-600 font-normal text-sm md:text-base">
+                  {i === 0 ? 'Diretor Financeiro' : i === 1 ? 'Diretora Administrativa' : i === 2 ? 'Diretor de RH' : 'Cargo' }
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Contact Section com parallax (bg-fixed em md+) */}
       <section
         id="contact"
