@@ -208,9 +208,12 @@ export default function Home() {
           </p>
           
           {/* Widget do Behold */}
-          <div suppressHydrationWarning>
-            <behold-widget feed-id="CaQuwhmvmljU5oUUxQEj"></behold-widget>
-          </div>
+          <div 
+            suppressHydrationWarning
+            dangerouslySetInnerHTML={{
+              __html: '<behold-widget feed-id="CaQuwhmvmljU5oUUxQEj"></behold-widget>'
+            }}
+          />
 
           {/* Botão para ver mais no Instagram */}
           <div className="text-center mt-8">
