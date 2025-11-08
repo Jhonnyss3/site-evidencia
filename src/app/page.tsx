@@ -1,3 +1,5 @@
+import Script from 'next/script';
+
 export default function Home() {
   const ctaButton =
     "relative bg-[#da412c] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#c13625] shadow-lg " +
@@ -194,6 +196,54 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Instagram Feed Section */}
+      <section id="instagram" aria-label="Instagram" className="bg-[#f8f9fa] py-16 md:py-20 font-sans">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
+          <h2 className="text-center text-[#1a2b3f] text-3xl md:text-4xl mb-4 font-bold">
+            Acompanhe nossso Instagram
+          </h2>
+          <p className="text-center text-gray-600 mb-8 md:mb-12 text-sm md:text-base font-normal">
+            Fique por dentro das novidades, dicas contábeis e conteúdos exclusivos
+          </p>
+          
+          {/* Widget do Behold */}
+          <div suppressHydrationWarning>
+            <behold-widget feed-id="CaQuwhmvmljU5oUUxQEj"></behold-widget>
+          </div>
+
+          {/* Botão para ver mais no Instagram */}
+          <div className="text-center mt-8">
+            <a
+              href="https://www.instagram.com/evidencia.assessoriacontabil"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[#da412c] hover:text-[#c13625] font-semibold transition-colors duration-300"
+            >
+              <span>Ver mais no Instagram</span>
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+                <path d="M12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Script do Behold - adicionar depois de todas as sections */}
+      <Script
+        id="behold-widget"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (() => {
+              const d=document,s=d.createElement("script");s.type="module";
+              s.src="https://w.behold.so/widget.js";d.head.append(s);
+            })();
+          `,
+        }}
+      />    
+
       {/* Contact Section com parallax (bg-fixed em md+) */}
       <section
         id="contact"
