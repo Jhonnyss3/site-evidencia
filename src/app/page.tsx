@@ -17,20 +17,21 @@ export default function Home() {
       <section
         id="home"
         aria-label="Início"
-        className="relative w-full min-h-[60vh] h-[70vh] md:h-[80vh] flex items-end justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
+        className="relative w-full min-h-[60vh] h-[70vh] md:h-[80vh] flex items-center justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
       >
         {/* Overlay para contraste no mobile */}
         <div className="pointer-events-none absolute inset-0 bg-black/20 md:bg-black/10" />
-        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pb-14 md:pb-16 flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-3 md:mb-4 drop-shadow-lg">
-            Evidência Assessoria Contábil
+        <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pb-14 md:pb-16 flex flex-col items-start text-left">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#da412c] mb-3 md:mb-4 drop-shadow-lg opacity-0 animate-[slideIn_1.5s_ease-out_forwards]">
+            EAC
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl text-white mb-6 md:mb-8 font-normal drop-shadow">
-            Expertise e Inovação para sua Empresa
+          <p className="text-base sm:text-lg md:text-2xl text-[#da412c] mb-6 md:mb-8 font-normal drop-shadow opacity-0 animate-[slideIn_1.5s_ease-out_0.5s_forwards]">
+            A Evidência é o instrumento,
+            <span className="block">o foco está em pessoas, resultados e equilíbrio.</span>
           </p>
           <a
             href={wppLink}
-            className={`${ctaButton} w-full sm:w-auto text-center`}
+            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center"
             style={{ overflow: 'hidden' }}
             target="_blank"
             rel="noopener noreferrer"
