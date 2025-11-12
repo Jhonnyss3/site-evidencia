@@ -1,4 +1,7 @@
+"use client";
+
 import Script from 'next/script';
+import { useEffect, useRef } from 'react';
 
 export default function Home() {
   const ctaButton =
@@ -11,10 +14,76 @@ export default function Home() {
   const defaultMsg = "Olá, eu quero assessoria contábil!";
   const wppLink = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(defaultMsg)}`;
 
+  const heroRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Observer para Hero
+    const heroObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-hero');
+          } else {
+            entry.target.classList.remove('animate-hero');
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    // Observer para About com contador animado
+    const aboutObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-about');
+            
+            // Animar os contadores
+            const counters = entry.target.querySelectorAll('[data-counter]');
+            counters.forEach((counter: Element) => {
+              const target = parseInt(counter.getAttribute('data-counter') || '0');
+              const duration = 2000; // 2 segundos
+              const increment = target / (duration / 16); // 60fps
+              let current = 0;
+              
+              const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                  counter.textContent = Math.floor(current).toString() + (counter.classList.contains('has-plus') ? '+' : '%');
+                  requestAnimationFrame(updateCounter);
+                } else {
+                  counter.textContent = target.toString() + (counter.classList.contains('has-plus') ? '+' : '%');
+                }
+              };
+              
+              updateCounter();
+            });
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (heroRef.current) {
+      heroObserver.observe(heroRef.current);
+    }
+
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutObserver.observe(aboutSection);
+    }
+
+    return () => {
+      heroObserver.disconnect();
+      aboutObserver.disconnect();
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section com parallax (bg-fixed em md+) */}
       <section
+        ref={heroRef}
         id="home"
         aria-label="Início"
         className="relative w-full h-screen flex items-center justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
@@ -22,16 +91,16 @@ export default function Home() {
         {/* Overlay para contraste no mobile */}
         <div className="pointer-events-none absolute inset-0 bg-black/20 md:bg-black/10" />
         <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pb-14 md:pb-16 flex flex-col items-start text-left">
-          <h1 className="text-4xl md:text-6xl font-bold text-[#da412c] mb-3 md:mb-4 drop-shadow-lg opacity-0 animate-[slideIn_1.5s_ease-out_forwards]">
+          <h1 className="text-4xl md:text-6xl font-bold text-[#da412c] mb-3 md:mb-4 drop-shadow-lg opacity-0 [.animate-hero_&]:animate-[slideIn_1.5s_ease-out_forwards]">
             E V I D E N C I ꓥ
           </h1>
-          <p className="text-base sm:text-lg md:text-2xl text-[#da412c] mb-6 md:mb-8 font-normal drop-shadow opacity-0 animate-[slideIn_1.5s_ease-out_0.5s_forwards]">
+          <p className="text-base sm:text-lg md:text-2xl text-[#da412c] mb-6 md:mb-8 font-normal drop-shadow opacity-0 [.animate-hero_&]:animate-[slideIn_1.5s_ease-out_0.5s_forwards]">
             A Evidência é o instrumento,
             <span className="block">o foco está em pessoas, resultados e equilíbrio.</span>
           </p>
           <a
             href={wppLink}
-            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center opacity-0 animate-[slideIn_1.5s_ease-out_1s_forwards]"
+            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center opacity-0 [.animate-hero_&]:animate-[slideIn_1.5s_ease-out_1s_forwards]"
             style={{ overflow: 'hidden' }}
             target="_blank"
             rel="noopener noreferrer"
@@ -44,25 +113,92 @@ export default function Home() {
       {/* About Section */}
       <section id="about" aria-label="Sobre" className="bg-white py-16 md:py-20 font-sans">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div className="flex flex-col justify-center h-full">
-              <h2 className="text-[#1a2b3f] text-3xl md:text-4xl mb-4 font-bold">Sobre a Evidência Assessoria Contábil</h2>
-              <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal">
-                Com experiência no mercado, a Evidência Assessoria Contábil alia conhecimento técnico e inovação 
-                para entregar soluções contábeis e gerencias sob medida para empresas de todos os seguimentos.
-              </p>
-              <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal">
-                Nosso foco é estruturar sua escrita contábil, fortalecendo  a gestão financeira para a tomada de decisão , 
-                proporcionando clareza e segurança para que você dedique seu tempo ao crescimento do negócio.
-              </p>
-            </div>
-            <div className="w-full h-[220px] sm:h-[280px] md:h-[400px] flex items-stretch">
+          {/* Título principal com fade in */}
+          <div className="text-center mb-12 md:mb-16 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_forwards]">
+            <h2 className="text-[#1a2b3f] text-3xl md:text-4xl mb-4 font-bold">
+              E V I D E N C I ꓥ
+            </h2>
+            <div className="w-24 h-1 bg-[#da412c] mx-auto mb-6"></div>
+            <p className="text-[#1a2b3f] text-lg md:text-xl max-w-[800px] mx-auto font-normal">
+              Transformar números em decisões conscientes, simplificando a contabilidade e fortalecendo o crescimento sustentável dos negócios.
+            </p>
+          </div>
+
+          {/* Grid com imagem e texto - com animação */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
+            {/* Imagem com slide da esquerda */}
+            <div className="w-full h-[280px] sm:h-[320px] md:h-[450px] flex items-stretch order-2 md:order-1 opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_0.3s_forwards]">
               <img
                 src="/about.jpg"
                 alt="Equipe da Evidência Assessoria Contábil"
-                className="w-full h-full object-cover rounded-lg shadow-lg"
-                style={{ maxHeight: 400 }}
+                className="w-full h-full object-cover rounded-lg shadow-xl hover:scale-105 transition-transform duration-500"
               />
+            </div>
+            
+            {/* Texto com slide da direita */}
+            <div className="flex flex-col justify-center h-full order-1 md:order-2 opacity-0 [.animate-about_&]:animate-[slideInRight_1s_ease-out_0.3s_forwards]">
+              <h3 className="text-[#1a2b3f] text-2xl md:text-3xl mb-4 font-bold">
+                Nossa essência
+              </h3>
+              <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal leading-relaxed">
+                A Evidência Assessoria Contábil acredita que a contabilidade deve ser uma ferramenta de gestão, não apenas uma obrigação fiscal.
+                Seu papel é traduzir os números com clareza e proximidade, ajudando o empresário a ter tranquilidade, segurança e performance em todas as etapas do seu negócio.
+              </p>
+              
+              {/* Estatísticas com hover effect e contador animado */}
+              <div className="grid grid-cols-3 gap-4 mt-4">
+                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+                    <span data-counter="15" className="has-plus">0+</span>
+                  </div>
+                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Anos de Experiência</div>
+                </div>
+                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+                    <span data-counter="200" className="has-plus">0+</span>
+                  </div>
+                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Clientes Ativos</div>
+                </div>
+                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+                    <span data-counter="100">0%</span>
+                  </div>
+                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Comprometimento</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Cards de valores com stagger animation */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
+              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
+                <span className="text-white text-2xl font-bold">M</span>
+              </div>
+              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Missão</h4>
+              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
+                Melhorar a qualidade de vida do empresário e promover o crescimento sustentável do seu negócio, usando a contabilidade como instrumento de gestão e resultado.
+              </p>
+            </div>
+
+            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
+                <span className="text-white text-2xl font-bold">V</span>
+              </div>
+              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Visão</h4>
+              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
+                Ser reconhecida como referência em contabilidade humanizada e estratégica no Brasil, mantendo a proximidade e excelência mesmo com o crescimento da base de clientes.
+              </p>
+            </div>
+
+            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
+              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
+                <span className="text-white text-2xl font-bold">V</span>
+              </div>
+              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Valores</h4>
+              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
+                Nossa atuação é guiada pela transparência, com clareza e verdade em cada relação. Comprometemo-nos a cumprir o que prometemos, entregando resultados concretos e mensuráveis.
+              </p>
             </div>
           </div>
         </div>
@@ -162,38 +298,57 @@ export default function Home() {
       <section id="team" aria-label="Equipe" className="py-16 md:py-20 font-sans">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
           <h2 className="text-center text-[#1a2b3f] text-3xl md:text-4xl mb-8 md:mb-12 font-bold">Nossa Equipe</h2>
-          <div className="flex justify-center mb-8 md:mb-12">
+          
+          {/* Primeira linha: Marcelo e Fábio centralizados */}
+          <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-8">
+            {/* Marcelo */}
             <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center">
               <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                <img src="/marcelo_logo.png" alt="Contador Responsável" className="w-full h-full object-cover" />
+                <img src="/marcelo_logo.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
               </div>
               <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Marcelo Carvalho</h3>
               <p className="text-gray-600 font-normal text-sm md:text-base">CRC: XXXXX</p>
               <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
             </div>
-          </div>
-          <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {[...Array(9)].map((_, i) => (
-              <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto" key={i}>
-                <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                  {i === 0 ? (
-                    <img src="/fabio_logo.png" alt="Fábio - Equipe" className="w-full h-full object-cover" />
-                  ) : i === 1 ? (
-                    <img src="/jaqueline_logo.png" alt="Jaqueline - Equipe" className="w-full h-full object-cover" />
-                  ) : i === 2 ? (
-                    <img src="/andre_logo.png" alt="André - Equipe" className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-[#666] text-sm md:text-base font-medium">[FOTO 200x200px]</span>
-                  )}
-                </div>
-                <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">
-                  {i === 0 ? 'Fábio Silva' : i === 1 ? 'Jaqueline Ezídio' : i === 2 ? 'André Calcagno' : `Nome ${i + 1}`}
-                </h3>
-                <p className="text-gray-600 font-normal text-sm md:text-base">
-                  {i === 0 ? 'Diretor Financeiro' : i === 1 ? 'Diretora Administrativa' : i === 2 ? 'Diretor de RH' : 'Cargo' }
-                </p>
+
+            {/* Fábio */}
+            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center">
+              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img src="/fabio_logo.png" alt="Fábio Silva" className="w-full h-full object-cover" />
               </div>
-            ))}
+              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Fábio Silva</h3>
+              <p className="text-gray-600 font-normal text-sm md:text-base">Diretor Financeiro</p>
+            </div>
+          </div>
+
+          {/* Segunda linha: Jaqueline, André e mais 1 */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1000px] mx-auto">
+            {/* Jaqueline */}
+            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
+              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img src="/jaqueline_logo.png" alt="Jaqueline Ezídio" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Jaqueline Ezídio</h3>
+              <p className="text-gray-600 font-normal text-sm md:text-base">Diretora Administrativa</p>
+            </div>
+
+            {/* André */}
+            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
+              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img src="/andre_logo.png" alt="André Calcagno" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">André Calcagno</h3>
+              <p className="text-gray-600 font-normal text-sm md:text-base">Diretor de RH</p>
+            </div>
+
+            {/* João */}
+            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
+              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+                <img src="/joao_logo.jpeg" alt="João Pedro Sanglard" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">João Pedro Sanglard</h3>
+              <p className="text-gray-600 font-normal text-sm md:text-base">Gerente T.I.</p>
+            </div>
           </div>
         </div>
       </section>
