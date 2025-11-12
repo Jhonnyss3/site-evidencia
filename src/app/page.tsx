@@ -100,105 +100,199 @@ export default function Home() {
           </p>
           <a
             href={wppLink}
-            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center opacity-0 [.animate-hero_&]:animate-[slideIn_1.5s_ease-out_1s_forwards]"
+            className="relative text-[#1a2b3f] py-2 no-underline font-bold transition-colors duration-300 inline-block hover:text-[#da412c] after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#1a2b3f] hover:after:bg-[#da412c] after:transition-all after:duration-300 hover:after:w-full w-full sm:w-auto text-left opacity-0 [.animate-hero_&]:animate-[slideIn_1.5s_ease-out_1s_forwards]"
             style={{ overflow: 'hidden' }}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Fale Conosco
+            FALE CONOSCO
           </a>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" aria-label="Sobre" className="bg-white py-16 md:py-20 font-sans">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-          {/* Título principal com fade in */}
-          <div className="text-center mb-12 md:mb-16 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_forwards]">
-            <h2 className="text-[#1a2b3f] text-3xl md:text-4xl mb-4 font-bold">
-              E V I D E N C I ꓥ
-            </h2>
-            <div className="w-24 h-1 bg-[#da412c] mx-auto mb-6"></div>
-            <p className="text-[#1a2b3f] text-lg md:text-xl max-w-[800px] mx-auto font-normal">
-              Transformar números em decisões conscientes, simplificando a contabilidade e fortalecendo o crescimento sustentável dos negócios.
-            </p>
+      <section id="about" aria-label="Sobre" className="bg-[#e4e4e4] font-sans">
+        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
+          {/* Imagem - Metade esquerda */}
+          <div 
+            className="w-full h-[50vh] lg:h-auto opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_forwards]"
+          >
+            <img
+              src="/about.jpg"
+              alt="Equipe da Evidência Assessoria Contábil"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          {/* Grid com imagem e texto - com animação */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
-            {/* Imagem com slide da esquerda */}
-            <div className="w-full h-[280px] sm:h-[320px] md:h-[450px] flex items-stretch order-2 md:order-1 opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_0.3s_forwards]">
-              <img
-                src="/about.jpg"
-                alt="Equipe da Evidência Assessoria Contábil"
-                className="w-full h-full object-cover rounded-lg shadow-xl hover:scale-105 transition-transform duration-500"
-              />
+          {/* Conteúdo - Metade direita */}
+          <div className="flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 md:py-16 space-y-12 md:space-y-16">
+            {/* Título principal */}
+            <div className="opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.3s_forwards]">
+              <h2 className="text-[#da412c] text-3xl md:text-4xl mb-4 font-bold">
+                E V I D E N C I ꓥ
+              </h2>
+              <div className="w-24 h-1 bg-[#1a2b3f] mb-6"></div>
+              <p className="text-[#da412c] text-base md:text-lg font-normal leading-relaxed">
+                Transformar números em decisões conscientes, simplificando a contabilidade e fortalecendo o crescimento sustentável dos negócios.
+              </p>
             </div>
-            
-            {/* Texto com slide da direita */}
-            <div className="flex flex-col justify-center h-full order-1 md:order-2 opacity-0 [.animate-about_&]:animate-[slideInRight_1s_ease-out_0.3s_forwards]">
-              <h3 className="text-[#1a2b3f] text-2xl md:text-3xl mb-4 font-bold">
+
+            {/* Nossa essência */}
+            <div className="opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+              <h3 className="text-[#da412c] text-2xl md:text-3xl mb-4 font-bold">
                 Nossa essência
               </h3>
-              <p className="mb-4 text-base md:text-lg text-[#1a2b3f] font-normal leading-relaxed">
+              <p className="text-[#da412c] text-sm md:text-base font-normal leading-relaxed mb-8">
                 A Evidência Assessoria Contábil acredita que a contabilidade deve ser uma ferramenta de gestão, não apenas uma obrigação fiscal.
                 Seu papel é traduzir os números com clareza e proximidade, ajudando o empresário a ter tranquilidade, segurança e performance em todas as etapas do seu negócio.
               </p>
-              
-              {/* Estatísticas com hover effect e contador animado */}
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
-                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+
+              {/* Estatísticas - Versão minimalista */}
+              <div className="flex flex-wrap gap-8 md:gap-12">
+                <div className="group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] mb-1">
                     <span data-counter="15" className="has-plus">0+</span>
                   </div>
-                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Anos de Experiência</div>
+                  <div className="text-sm md:text-base text-gray-600">Anos de Experiência</div>
                 </div>
-                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
-                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+                <div className="group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] mb-1">
                     <span data-counter="200" className="has-plus">0+</span>
                   </div>
-                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Clientes Ativos</div>
+                  <div className="text-sm md:text-base text-gray-600">Clientes Ativos</div>
                 </div>
-                <div className="text-center p-4 bg-[#f8f9fa] rounded-lg hover:bg-[#da412c] transition-all duration-300 transform hover:-translate-y-1 group">
-                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] group-hover:text-white mb-1 transition-colors">
+                <div className="group">
+                  <div className="text-3xl md:text-4xl font-bold text-[#da412c] mb-1">
                     <span data-counter="100">0%</span>
                   </div>
-                  <div className="text-xs md:text-sm text-gray-600 group-hover:text-white transition-colors">Comprometimento</div>
+                  <div className="text-sm md:text-base text-gray-600">Comprometimento</div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Cards de valores com stagger animation */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
-              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
-                <span className="text-white text-2xl font-bold">M</span>
-              </div>
-              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Missão</h4>
-              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
-                Melhorar a qualidade de vida do empresário e promover o crescimento sustentável do seu negócio, usando a contabilidade como instrumento de gestão e resultado.
-              </p>
-            </div>
+            {/* MVV - Versão sofisticada com mais destaque */}
+            <div className="opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
+              <div className="border-t border-[#1a2b3f]/20 pt-8">
+                {/* Títulos horizontais com mais destaque */}
+                <div className="flex flex-wrap gap-8 md:gap-12 lg:gap-16 mb-6">
+                  <button
+                    onClick={() => {
+                      const missao = document.getElementById('missao-content');
+                      const visao = document.getElementById('visao-content');
+                      const valores = document.getElementById('valores-content');
+                      const missaoIcon = document.getElementById('missao-icon');
+                      
+                      if (missao?.classList.contains('hidden')) {
+                        missao?.classList.remove('hidden');
+                        missaoIcon?.classList.add('rotate-180');
+                        visao?.classList.add('hidden');
+                        valores?.classList.add('hidden');
+                        document.getElementById('visao-icon')?.classList.remove('rotate-180');
+                        document.getElementById('valores-icon')?.classList.remove('rotate-180');
+                      } else {
+                        missao?.classList.add('hidden');
+                        missaoIcon?.classList.remove('rotate-180');
+                      }
+                    }}
+                    className="group relative"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#1a2b3f] text-xl md:text-2xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                        Missão
+                      </span>
+                      <svg id="missao-icon" className="w-5 h-5 text-[#1a2b3f] group-hover:text-[#da412c] transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="absolute left-0 -bottom-2 w-0 h-[2px] bg-[#da412c] transition-all duration-300 group-hover:w-full"></span>
+                  </button>
 
-            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
-              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
-                <span className="text-white text-2xl font-bold">V</span>
-              </div>
-              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Visão</h4>
-              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
-                Ser reconhecida como referência em contabilidade humanizada e estratégica no Brasil, mantendo a proximidade e excelência mesmo com o crescimento da base de clientes.
-              </p>
-            </div>
+                  <button
+                    onClick={() => {
+                      const missao = document.getElementById('missao-content');
+                      const visao = document.getElementById('visao-content');
+                      const valores = document.getElementById('valores-content');
+                      const visaoIcon = document.getElementById('visao-icon');
+                      
+                      if (visao?.classList.contains('hidden')) {
+                        visao?.classList.remove('hidden');
+                        visaoIcon?.classList.add('rotate-180');
+                        missao?.classList.add('hidden');
+                        valores?.classList.add('hidden');
+                        document.getElementById('missao-icon')?.classList.remove('rotate-180');
+                        document.getElementById('valores-icon')?.classList.remove('rotate-180');
+                      } else {
+                        visao?.classList.add('hidden');
+                        visaoIcon?.classList.remove('rotate-180');
+                      }
+                    }}
+                    className="group relative"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#1a2b3f] text-xl md:text-2xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                        Visão
+                      </span>
+                      <svg id="visao-icon" className="w-5 h-5 text-[#1a2b3f] group-hover:text-[#da412c] transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="absolute left-0 -bottom-2 w-0 h-[2px] bg-[#da412c] transition-all duration-300 group-hover:w-full"></span>
+                  </button>
 
-            <div className="bg-[#f8f9fa] p-6 md:p-8 rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
-              <div className="w-14 h-14 bg-[#da412c] rounded-full flex items-center justify-center mb-4 transition-transform">
-                <span className="text-white text-2xl font-bold">V</span>
+                  <button
+                    onClick={() => {
+                      const missao = document.getElementById('missao-content');
+                      const visao = document.getElementById('visao-content');
+                      const valores = document.getElementById('valores-content');
+                      const valoresIcon = document.getElementById('valores-icon');
+                      
+                      if (valores?.classList.contains('hidden')) {
+                        valores?.classList.remove('hidden');
+                        valoresIcon?.classList.add('rotate-180');
+                        missao?.classList.add('hidden');
+                        visao?.classList.add('hidden');
+                        document.getElementById('missao-icon')?.classList.remove('rotate-180');
+                        document.getElementById('visao-icon')?.classList.remove('rotate-180');
+                      } else {
+                        valores?.classList.add('hidden');
+                        valoresIcon?.classList.remove('rotate-180');
+                      }
+                    }}
+                    className="group relative"
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#1a2b3f] text-xl md:text-2xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                        Valores
+                      </span>
+                      <svg id="valores-icon" className="w-5 h-5 text-[#1a2b3f] group-hover:text-[#da412c] transition-all duration-300" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                    <span className="absolute left-0 -bottom-2 w-0 h-[2px] bg-[#da412c] transition-all duration-300 group-hover:w-full"></span>
+                  </button>
+                </div>
+
+                {/* Conteúdos expansíveis */}
+                <div className="min-h-[80px]">
+                  <div id="missao-content" className="hidden">
+                    <p className="text-gray-600 font-normal text-base md:text-lg leading-relaxed pt-6">
+                      Melhorar a qualidade de vida do empresário e promover o crescimento sustentável do seu negócio, usando a contabilidade como instrumento de gestão e resultado.
+                    </p>
+                  </div>
+
+                  <div id="visao-content" className="hidden">
+                    <p className="text-gray-600 font-normal text-base md:text-lg leading-relaxed pt-6">
+                      Ser reconhecida como referência em contabilidade humanizada e estratégica no Brasil, mantendo a proximidade e excelência mesmo com o crescimento da base de clientes.
+                    </p>
+                  </div>
+
+                  <div id="valores-content" className="hidden">
+                    <p className="text-gray-600 font-normal text-base md:text-lg leading-relaxed pt-6">
+                      Nossa atuação é guiada pela transparência, com clareza e verdade em cada relação. Comprometemo-nos a cumprir o que prometemos, entregando resultados concretos e mensuráveis.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <h4 className="text-[#1a2b3f] text-xl font-bold mb-3">Valores</h4>
-              <p className="text-gray-600 font-normal text-sm md:text-base leading-relaxed">
-                Nossa atuação é guiada pela transparência, com clareza e verdade em cada relação. Comprometemo-nos a cumprir o que prometemos, entregando resultados concretos e mensuráveis.
-              </p>
             </div>
           </div>
         </div>
