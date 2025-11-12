@@ -31,7 +31,7 @@ export default function Home() {
           </p>
           <a
             href={wppLink}
-            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center"
+            className="relative bg-[#1a2b3f] text-white py-4 px-8 no-underline rounded font-bold transition-colors duration-300 inline-block hover:bg-[#152231] shadow-lg after:content-[''] after:absolute after:left-1/2 after:bottom-3 after:-translate-x-1/2 after:w-0 after:h-[3px] after:bg-white after:transition-all after:duration-300 hover:after:w-3/4 w-full sm:w-auto text-center opacity-0 animate-[slideIn_1.5s_ease-out_1s_forwards]"
             style={{ overflow: 'hidden' }}
             target="_blank"
             rel="noopener noreferrer"

@@ -65,3 +65,15 @@ img, video, canvas, svg {
     transform: translateX(0);
   }
 }
+
+/* Animação fadeInDown para navbar */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

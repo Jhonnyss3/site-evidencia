@@ -41,10 +41,12 @@ export default function Header() {
           "fixed w-full top-0 z-50 transition-all duration-300",
           // Transparente no topo
           "bg-transparent border-b border-transparent",
+          // Animação inicial
+          "opacity-0 animate-[fadeInDown_1.5s_ease-out_forwards]",
           // Quando o sanduíche flutuante estiver visível, header some
           showFloatingMenu
-            ? "opacity-0 -translate-y-4 pointer-events-none"
-            : "opacity-100 translate-y-0 pointer-events-auto",
+            ? "!opacity-0 -translate-y-4 pointer-events-none"
+            : "pointer-events-auto",
         ].join(" ")}
       >
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 md:px-8 h-16 flex items-center justify-between">
