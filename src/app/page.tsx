@@ -17,13 +17,13 @@ export default function Home() {
       <section
         id="home"
         aria-label="Início"
-        className="relative w-full min-h-[60vh] h-[70vh] md:h-[80vh] flex items-center justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
+        className="relative w-full h-screen flex items-center justify-center bg-[url('/banner.png')] bg-cover bg-center md:bg-fixed font-sans overflow-hidden"
       >
         {/* Overlay para contraste no mobile */}
         <div className="pointer-events-none absolute inset-0 bg-black/20 md:bg-black/10" />
         <div className="relative z-10 w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 pb-14 md:pb-16 flex flex-col items-start text-left">
           <h1 className="text-4xl md:text-6xl font-bold text-[#da412c] mb-3 md:mb-4 drop-shadow-lg opacity-0 animate-[slideIn_1.5s_ease-out_forwards]">
-            EAC
+            E V I D E N C I ꓥ
           </h1>
           <p className="text-base sm:text-lg md:text-2xl text-[#da412c] mb-6 md:mb-8 font-normal drop-shadow opacity-0 animate-[slideIn_1.5s_ease-out_0.5s_forwards]">
             A Evidência é o instrumento,
