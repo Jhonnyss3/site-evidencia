@@ -64,6 +64,18 @@ export default function Home() {
       { threshold: 0.2 }
     );
 
+    // **NOVO: Observer para Services**
+    const servicesObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-services');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
     if (heroRef.current) {
       heroObserver.observe(heroRef.current);
     }
@@ -73,9 +85,35 @@ export default function Home() {
       aboutObserver.observe(aboutSection);
     }
 
+    // **NOVO: Observar Services Section**
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesObserver.observe(servicesSection);
+    }
+
+    // **NOVO: Observer para FAQ**
+    const faqObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-faq');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    // Observar FAQ Section
+    const faqSection = document.getElementById('faq');
+    if (faqSection) {
+      faqObserver.observe(faqSection);
+    }
+
     return () => {
       heroObserver.disconnect();
       aboutObserver.disconnect();
+      servicesObserver.disconnect();
+      faqObserver.disconnect(); // Limpar observer
     };
   }, []);
 
@@ -112,7 +150,7 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" aria-label="Sobre" className="bg-[#e4e4e4] font-sans">
-        <div className="grid grid-cols-1 lg:grid-cols-2 h-screen">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
           {/* Imagem - Metade esquerda */}
           <div 
             className="w-full h-[50vh] lg:h-auto opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_forwards]"
@@ -299,90 +337,332 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" aria-label="Serviços" className="bg-[#1a2b3f] py-16 md:py-20 font-sans">
-        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-          <h2 className="text-center text-white text-3xl md:text-4xl mb-8 md:mb-12 font-bold">Nossos Serviços Contábeis</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
-                📊
+      <section id="services" aria-label="Serviços" className="bg-[#e4e4e4] font-sans overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+          {/* Conteúdo - Metade esquerda */}
+          <div className="flex flex-col justify-center px-6 sm:px-8 md:px-12 lg:px-16 py-12 md:py-16 space-y-8 md:space-y-10 order-2 lg:order-1">
+            {/* Título principal com efeitos modernos */}
+            <div className="opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+              <div className="relative inline-block mb-6">
+                <h2 className="text-[#1a2b3f] text-3xl md:text-4xl lg:text-5xl font-bold relative z-10">
+                  Nossos Serviços
+                </h2>
+                {/* Sublinhado decorativo animado */}
+                <div className="absolute -bottom-2 left-0 w-24 h-1 bg-[#da412c]"></div>
+                <div className="absolute -bottom-2 left-0 w-0 h-1 bg-[#1a2b3f] opacity-30 [.animate-services_&]:animate-[expandWidth_1.5s_ease-out_0.5s_forwards]"></div>
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Contábil</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">
-                Escrituração contábil, balanços patrimoniais e relatórios gerenciais para decisões estratégicas.
+              
+              <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed mt-8">
+                Traduzimos números em estratégia, transformamos obrigações em oportunidades e construímos relações de confiança que impulsionam o crescimento sustentável.
               </p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
-                📋
+
+            {/* Grid de serviços - Cards ultra modernos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Card 1 - Contábil */}
+              <div className="group relative opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
+                <div className="relative bg-white p-6 rounded-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-[#da412c]/20">
+                  {/* Gradiente de fundo no hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a2b3f] to-[#2a3b4f] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                  
+                  <div className="relative z-10">
+                    {/* Ícone com animação */}
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-2xl text-white text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                      📊
+                    </div>
+                    
+                    {/* Título */}
+                    <h3 className="text-[#1a2b3f] text-xl md:text-2xl font-bold mb-3 transition-colors duration-500 group-hover:text-white">
+                      Contábil
+                    </h3>
+                    
+                    {/* Descrição */}
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed transition-colors duration-500 group-hover:text-gray-100">
+                      Escrituração contábil, balanços patrimoniais e relatórios gerenciais para decisões estratégicas.
+                    </p>
+                  </div>
+
+                  {/* Linha decorativa animada */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#da412c] to-[#ff6b54] transition-all duration-500 group-hover:w-full rounded-b-xl"></div>
+                </div>
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Fiscal e Tributário</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">
-                Apuração de impostos, planejamento tributário e entrega de obrigações acessórias com eficiência.
-              </p>
-            </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duration-300 hover:-translate-y-1">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
-                👥
+
+              {/* Card 2 - Fiscal e Tributário */}
+              <div className="group relative opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+                <div className="relative bg-white p-6 rounded-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-[#da412c]/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a2b3f] to-[#2a3b4f] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-2xl text-white text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                      📋
+                    </div>
+                    
+                    <h3 className="text-[#1a2b3f] text-xl md:text-2xl font-bold mb-3 transition-colors duration-500 group-hover:text-white">
+                      Fiscal e Tributário
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed transition-colors duration-500 group-hover:text-gray-100">
+                      Apuração de impostos, planejamento tributário e entrega de obrigações acessórias com eficiência.
+                    </p>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#da412c] to-[#ff6b54] transition-all duration-500 group-hover:w-full rounded-b-xl"></div>
+                </div>
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Gestão do funcionário</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">
-                Admissões, Demissões, folha e obrigações trabalhistas recrutamento e seleção de pessoal , treinamento , entrevista com orientação para as melhores praticas e compliance.
-              </p>
-            </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg text-center shadow-lg transition-transform duração-300 hover:-translate-y-1">
-              <div className="w-16 h-16 md:w-20 md:h-20 bg-[#da412c] rounded-full mx-auto mb-4 flex items-center justify-center text-white text-xl md:text-2xl">
-                💡
+
+              {/* Card 3 - Gestão do Funcionário */}
+              <div className="group relative opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+                <div className="relative bg-white p-6 rounded-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-[#da412c]/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a2b3f] to-[#2a3b4f] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-2xl text-white text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                      👥
+                    </div>
+                    
+                    <h3 className="text-[#1a2b3f] text-xl md:text-2xl font-bold mb-3 transition-colors duration-500 group-hover:text-white">
+                      Gestão do Funcionário
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed transition-colors duration-500 group-hover:text-gray-100">
+                      Admissões, demissões, folha de pagamento, recrutamento, treinamento e compliance trabalhista.
+                    </p>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#da412c] to-[#ff6b54] transition-all duration-500 group-hover:w-full rounded-b-xl"></div>
+                </div>
               </div>
-              <h3 className="font-bold mb-2 text-[#1a2b3f]">Gestão Gerencial</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">
-                Análise de viabilidade, planejamento estratégico , analise de relatório gerencial e suporte para expansão do negócio.
-              </p>
+
+              {/* Card 4 - Gestão Gerencial */}
+              <div className="group relative opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
+                <div className="relative bg-white p-6 rounded-xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border border-transparent hover:border-[#da412c]/20">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#1a2b3f] to-[#2a3b4f] opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="w-16 h-16 mb-4 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-2xl text-white text-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                      💡
+                    </div>
+                    
+                    <h3 className="text-[#1a2b3f] text-xl md:text-2xl font-bold mb-3 transition-colors duration-500 group-hover:text-white">
+                      Gestão Gerencial
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed transition-colors duration-500 group-hover:text-gray-100">
+                      Análise de viabilidade, planejamento estratégico, relatórios gerenciais e suporte para expansão do negócio.
+                    </p>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-[#da412c] to-[#ff6b54] transition-all duration-500 group-hover:w-full rounded-b-xl"></div>
+                </div>
+              </div>
             </div>
+
+            {/* CTA - Botão de ação modernizado */}
+            <div className="opacity-0 [.animate-services_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
+              <div className="border-t border-gray-300 pt-8">
+                <p className="text-gray-600 text-base md:text-lg mb-4 font-normal">
+                  Quer entender como cada serviço pode transformar seu negócio?
+                </p>
+                <a
+                  href={wppLink}
+                  className="group relative text-[#1a2b3f] py-2 no-underline font-bold transition-all duration-300 inline-flex items-center gap-2 hover:text-[#da412c]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="relative">
+                    FALE COM NOSSA EQUIPE
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#da412c] transition-all duration-300 group-hover:w-full"></span>
+                  </span>
+                  <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Imagem - Metade direita */}
+          <div className="w-full h-[50vh] lg:h-auto order-1 lg:order-2 opacity-0 [.animate-services_&]:animate-[slideInRight_1s_ease-out_forwards]">
+            <img
+              src="/service_banner.jpeg"
+              alt="Serviços da Evidência Assessoria Contábil"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="sac" aria-label="Perguntas Frequentes" className="bg-[#f8f9fa] py-16 md:py-20 font-sans">
-        <div className="w-full max-w-[900px] mx-auto px-4 sm:px-6 md:px-8">
-          <h2 className="text-center text-[#1a2b3f] text-3xl md:text-4xl mb-8 md:mb-12 font-bold">Perguntas Frequentes (FAQ)</h2>
-        <div className="space-y-6 md:space-y-8">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Quais serviços a Evidência Assessoria Contábil oferece?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                Oferecemos contabilidade completa, consultoria empresarial, gestão fiscal, folha de pagamento, planejamento tributário e muito mais para empresas de todos os portes.
-              </p>
+      <section id="faq" aria-label="Perguntas Frequentes" className="bg-[#e4e4e4] py-16 md:py-20 font-sans overflow-hidden">
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
+          {/* Título principal com efeitos modernos */}
+          <div className="text-center mb-12 md:mb-16 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
+            <div className="relative inline-block mb-6">
+              <h2 className="text-[#1a2b3f] text-3xl md:text-4xl lg:text-5xl font-bold relative z-10">
+                Perguntas Frequentes
+              </h2>
+              {/* Sublinhado decorativo animado centralizado */}
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-[#da412c]"></div>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 bg-[#1a2b3f] opacity-30 [.animate-faq_&]:animate-[expandWidthCenter_1.5s_ease-out_0.5s_forwards]"></div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Atendem empresas de fora de Volta Redonda?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                Sim! Atendemos clientes de toda a região e também de outros estados, com atendimento digital e presencial.
-              </p>
+            
+            <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed mt-8 max-w-[800px] mx-auto">
+              Tire suas dúvidas sobre como a Evidência pode transformar a gestão contábil do seu negócio com clareza, estratégia e resultados mensuráveis.
+            </p>
+          </div>
+
+          {/* Grid de FAQs - Cards expansíveis */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {/* FAQ 1 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  {/* Ícone */}
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    ❓
+                  </div>
+                  
+                  <div className="flex-1">
+                    {/* Pergunta */}
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      O que diferencia a Evidência de outros escritórios de contabilidade?
+                    </h3>
+                    
+                    {/* Resposta */}
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      Oferecemos contabilidade humanizada e estratégica, traduzindo números em decisões conscientes com metodologia própria de análise e acompanhamento próximo.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Como funciona o atendimento pelo WhatsApp?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                Nosso atendimento via WhatsApp é rápido, personalizado e sem burocracia. Basta clicar no botão de contato e falar diretamente com nossa equipe.
-              </p>
+
+            {/* FAQ 2 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    💼
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      Como funciona o processo de onboarding de novos clientes?
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      Realizamos entrevistas detalhadas, mapeamento de processos e aplicamos checklists personalizados para entender profundamente seu negócio e suas necessidades.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Qual o prazo para abertura de empresa?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                O prazo varia conforme o tipo de empresa e documentação, mas geralmente fica entre 15 a 30 dias úteis.
-              </p>
+
+            {/* FAQ 3 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    📊
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      Vocês trabalham com planejamento tributário?
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      Sim! Realizamos simulações tributárias, análise de custo por produto e planejamento estratégico anual para redução segura da carga tributária.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Fazem planejamento tributário?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                Sim! Análise completa e estratégia para redução legal de impostos.
-              </p>
+
+            {/* FAQ 4 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    📈
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      Como acompanham os resultados mensais da minha empresa?
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      Fornecemos relatórios e dashboards mensais com visão gerencial, monitoramento de margem bruta e acompanhamento constante da performance do negócio.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-[#da412c] text-lg md:text-xl font-bold mb-2">Como é feito o acompanhamento mensal?</h3>
-              <p className="text-[#1a2b3f] text-sm md:text-base font-normal">
-                Relatórios mensais, reuniões de acompanhamento e atendimento via WhatsApp/telefone.
+
+            {/* FAQ 5 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    🤝
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      Atendem empresas de outros estados?
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      Sim! Atendemos clientes de todo o Brasil, mantendo a proximidade e atendimento humanizado através de ferramentas digitais e reuniões online.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* FAQ 6 */}
+            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.9s_forwards]">
+              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
+                    ⚖️
+                  </div>
+                  
+                  <div className="flex-1">
+                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
+                      Qual o prazo para abertura de empresa?
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
+                      O prazo varia conforme o tipo de empresa e documentação, mas geralmente fica entre 15 a 30 dias úteis, com acompanhamento transparente de cada etapa.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA Final */}
+          <div className="text-center mt-12 md:mt-16 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_1s_forwards]">
+            <div className="bg-gradient-to-r from-[#1a2b3f] to-[#2a3b4f] rounded-2xl p-8 md:p-12 shadow-2xl">
+              <h3 className="text-white text-2xl md:text-3xl font-bold mb-4">
+                Não encontrou sua resposta?
+              </h3>
+              <p className="text-gray-200 text-base md:text-lg mb-6 max-w-[600px] mx-auto">
+                Nossa equipe está pronta para esclarecer todas as suas dúvidas e mostrar como podemos transformar a gestão do seu negócio.
               </p>
+              <a
+                href={wppLink}
+                className="group inline-flex items-center gap-3 bg-[#da412c] hover:bg-[#c13625] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span>FALAR COM ESPECIALISTA</span>
+                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
