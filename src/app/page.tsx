@@ -495,233 +495,294 @@ export default function Home() {
       {/* FAQ Section */}
       <section id="faq" aria-label="Perguntas Frequentes" className="bg-[#e4e4e4] py-16 md:py-20 font-sans overflow-hidden">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-          {/* Título principal com efeitos modernos */}
+          {/* Título principal centralizado */}
           <div className="text-center mb-12 md:mb-16 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
-            <div className="relative inline-block mb-6">
-              <h2 className="text-[#1a2b3f] text-3xl md:text-4xl lg:text-5xl font-bold relative z-10">
-                Perguntas Frequentes
-              </h2>
-              {/* Sublinhado decorativo animado centralizado */}
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-24 h-1 bg-[#da412c]"></div>
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 bg-[#1a2b3f] opacity-30 [.animate-faq_&]:animate-[expandWidthCenter_1.5s_ease-out_0.5s_forwards]"></div>
-            </div>
-            
-            <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed mt-8 max-w-[800px] mx-auto">
-              Tire suas dúvidas sobre como a Evidência pode transformar a gestão contábil do seu negócio com clareza, estratégia e resultados mensuráveis.
+            <h2 className="text-[#da412c] text-3xl md:text-4xl mb-4 font-bold">
+              Perguntas Frequentes
+            </h2>
+            <div className="w-24 h-1 bg-[#1a2b3f] mb-6 mx-auto"></div>
+            <p className="text-[#da412c] text-base md:text-lg font-normal leading-relaxed max-w-[800px] mx-auto">
+              Tire suas dúvidas sobre como a Evidência pode transformar a gestão contábil do seu negócio.
             </p>
           </div>
 
-          {/* Grid de FAQs - Cards expansíveis */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+          {/* Lista de perguntas - Estilo accordion minimalista centralizado */}
+          <div className="space-y-6 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards] max-w-[900px] mx-auto">
             {/* FAQ 1 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  {/* Ícone */}
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    ❓
-                  </div>
-                  
-                  <div className="flex-1">
-                    {/* Pergunta */}
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      O que diferencia a Evidência de outros escritórios de contabilidade?
-                    </h3>
-                    
-                    {/* Resposta */}
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      Oferecemos contabilidade humanizada e estratégica, traduzindo números em decisões conscientes com metodologia própria de análise e acompanhamento próximo.
-                    </p>
-                  </div>
-                </div>
+            <div className="border-b border-[#1a2b3f]/20 pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-1');
+                  const icon = document.getElementById('faq-icon-1');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  O que diferencia a Evidência de outros escritórios de contabilidade?
+                </h3>
+                <svg id="faq-icon-1" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-1" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  Oferecemos contabilidade humanizada e estratégica, traduzindo números em decisões conscientes com metodologia própria de análise e acompanhamento próximo.
+                </p>
               </div>
             </div>
 
             {/* FAQ 2 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    💼
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      Como funciona o processo de onboarding de novos clientes?
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      Realizamos entrevistas detalhadas, mapeamento de processos e aplicamos checklists personalizados para entender profundamente seu negócio e suas necessidades.
-                    </p>
-                  </div>
-                </div>
+            <div className="border-b border-[#1a2b3f]/20 pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-2');
+                  const icon = document.getElementById('faq-icon-2');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  Como funciona o processo de onboarding de novos clientes?
+                </h3>
+                <svg id="faq-icon-2" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-2" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  Realizamos entrevistas detalhadas, mapeamento de processos e aplicamos checklists personalizados para entender profundamente seu negócio e suas necessidades.
+                </p>
               </div>
             </div>
 
             {/* FAQ 3 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    📊
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      Vocês trabalham com planejamento tributário?
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      Sim! Realizamos simulações tributárias, análise de custo por produto e planejamento estratégico anual para redução segura da carga tributária.
-                    </p>
-                  </div>
-                </div>
+            <div className="border-b border-[#1a2b3f]/20 pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-3');
+                  const icon = document.getElementById('faq-icon-3');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  Vocês trabalham com planejamento tributário?
+                </h3>
+                <svg id="faq-icon-3" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-3" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  Sim! Realizamos simulações tributárias, análise de custo por produto e planejamento estratégico anual para redução segura da carga tributária.
+                </p>
               </div>
             </div>
 
             {/* FAQ 4 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    📈
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      Como acompanham os resultados mensais da minha empresa?
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      Fornecemos relatórios e dashboards mensais com visão gerencial, monitoramento de margem bruta e acompanhamento constante da performance do negócio.
-                    </p>
-                  </div>
-                </div>
+            <div className="border-b border-[#1a2b3f]/20 pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-4');
+                  const icon = document.getElementById('faq-icon-4');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  Como acompanham os resultados mensais da minha empresa?
+                </h3>
+                <svg id="faq-icon-4" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-4" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  Fornecemos relatórios e dashboards mensais com visão gerencial, monitoramento de margem bruta e acompanhamento constante da performance do negócio.
+                </p>
               </div>
             </div>
 
             {/* FAQ 5 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    🤝
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      Atendem empresas de outros estados?
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      Sim! Atendemos clientes de todo o Brasil, mantendo a proximidade e atendimento humanizado através de ferramentas digitais e reuniões online.
-                    </p>
-                  </div>
-                </div>
+            <div className="border-b border-[#1a2b3f]/20 pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-5');
+                  const icon = document.getElementById('faq-icon-5');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  Atendem empresas de outros estados?
+                </h3>
+                <svg id="faq-icon-5" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-5" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  Sim! Atendemos clientes de todo o Brasil, mantendo a proximidade e atendimento humanizado através de ferramentas digitais e reuniões online.
+                </p>
               </div>
             </div>
 
             {/* FAQ 6 */}
-            <div className="group opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.9s_forwards]">
-              <div className="relative bg-[#f8f9fa] p-6 md:p-8 rounded-xl border-l-4 border-[#da412c] transition-all duration-500 hover:shadow-2xl hover:bg-white hover:border-l-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-[#da412c] to-[#ff6b54] rounded-xl text-white text-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 shadow-lg">
-                    ⚖️
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-[#da412c]">
-                      Qual o prazo para abertura de empresa?
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm md:text-base font-normal leading-relaxed">
-                      O prazo varia conforme o tipo de empresa e documentação, mas geralmente fica entre 15 a 30 dias úteis, com acompanhamento transparente de cada etapa.
-                    </p>
-                  </div>
-                </div>
+            <div className="pb-6">
+              <button
+                onClick={() => {
+                  const content = document.getElementById('faq-6');
+                  const icon = document.getElementById('faq-icon-6');
+                  if (content?.classList.contains('hidden')) {
+                    content?.classList.remove('hidden');
+                    icon?.classList.add('rotate-180');
+                  } else {
+                    content?.classList.add('hidden');
+                    icon?.classList.remove('rotate-180');
+                  }
+                }}
+                className="group w-full text-left flex items-start justify-between gap-4"
+              >
+                <h3 className="text-[#1a2b3f] text-lg md:text-xl font-bold group-hover:text-[#da412c] transition-colors duration-300">
+                  Qual o prazo para abertura de empresa?
+                </h3>
+                <svg id="faq-icon-6" className="w-5 h-5 text-[#1a2b3f] flex-shrink-0 transition-all duration-300 group-hover:text-[#da412c]" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </button>
+              <div id="faq-6" className="hidden mt-4">
+                <p className="text-gray-600 text-base md:text-lg font-normal leading-relaxed">
+                  O prazo varia conforme o tipo de empresa e documentação, mas geralmente fica entre 15 a 30 dias úteis, com acompanhamento transparente de cada etapa.
+                </p>
               </div>
             </div>
           </div>
 
           {/* CTA Final */}
-          <div className="text-center mt-12 md:mt-16 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_1s_forwards]">
-            <div className="bg-gradient-to-r from-[#1a2b3f] to-[#2a3b4f] rounded-2xl p-8 md:p-12 shadow-2xl">
-              <h3 className="text-white text-2xl md:text-3xl font-bold mb-4">
-                Não encontrou sua resposta?
-              </h3>
-              <p className="text-gray-200 text-base md:text-lg mb-6 max-w-[600px] mx-auto">
-                Nossa equipe está pronta para esclarecer todas as suas dúvidas e mostrar como podemos transformar a gestão do seu negócio.
-              </p>
-              <a
-                href={wppLink}
-                className="group inline-flex items-center gap-3 bg-[#da412c] hover:bg-[#c13625] text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>FALAR COM ESPECIALISTA</span>
-                <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </a>
-            </div>
+          <div className="mt-12 md:mt-16 pt-8 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards] max-w-[900px] mx-auto text-center">
+            <p className="text-gray-600 text-base md:text-lg mb-4 font-normal">
+              Não encontrou sua resposta? Converse com nossa equipe.
+            </p>
+            <a
+              href={wppLink}
+              className="group relative text-[#1a2b3f] py-2 no-underline font-bold transition-all duration-300 inline-flex items-center gap-2 hover:text-[#da412c] mx-auto"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="relative">
+                FALE COM NOSSA EQUIPE
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-[#da412c] transition-all duration-300 group-hover:w-full"></span>
+              </span>
+              <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section id="team" aria-label="Equipe" className="py-16 md:py-20 font-sans">
+      <section id="team" aria-label="Equipe" className="bg-[#e4e4e4] py-16 md:py-20 font-sans">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
-          <h2 className="text-center text-[#1a2b3f] text-3xl md:text-4xl mb-8 md:mb-12 font-bold">Nossa Equipe</h2>
-          
-          {/* Primeira linha: Marcelo e Fábio centralizados */}
-          <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-6 md:mb-8">
-            {/* Marcelo */}
-            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center">
-              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                <img src="/marcelo_logo.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
-              </div>
-              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Marcelo Carvalho</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">CRC: XXXXX</p>
-              <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
-            </div>
+          {/* Título principal */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-[#da412c] text-3xl md:text-4xl mb-4 font-bold">
+              Nossa Equipe
+            </h2>
+            <div className="w-24 h-1 bg-[#1a2b3f] mb-6 mx-auto"></div>
+            <p className="text-[#da412c] text-base md:text-lg font-normal leading-relaxed max-w-[800px] mx-auto">
+              Conheça os profissionais que tornam possível nossa missão de transformar a contabilidade em ferramenta de gestão.
+            </p>
+          </div>
 
-            {/* Fábio */}
-            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center">
-              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
-                <img src="/fabio_logo.png" alt="Fábio Silva" className="w-full h-full object-cover" />
+          {/* Sócios - Destaque especial */}
+          <div className="mb-12 md:mb-16">
+            <h3 className="text-[#1a2b3f] text-2xl md:text-3xl font-bold text-center mb-8">Sócios</h3>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+              {/* Marcelo */}
+              <div className="text-center">
+                <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
+                  <img src="/marcelo_logo.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
+                </div>
+                <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Marcelo Carvalho</h4>
+                <p className="text-gray-600 font-normal text-sm md:text-base">CRC: XXXXX</p>
+                <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
               </div>
-              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Fábio Silva</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">Diretor Financeiro</p>
+
+              {/* Fábio */}
+              <div className="text-center">
+                <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
+                  <img src="/fabio_logo.png" alt="Fábio Silva" className="w-full h-full object-cover" />
+                </div>
+                <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Fábio Silva</h4>
+                <p className="text-gray-600 font-normal text-sm md:text-base">Diretor Financeiro</p>
+              </div>
             </div>
           </div>
 
-          {/* Segunda linha: Jaqueline, André e mais 1 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-[1000px] mx-auto">
+          {/* Linha divisória sutil */}
+          <div className="w-full max-w-[600px] mx-auto mb-12 md:mb-16">
+            <div className="h-px bg-[#1a2b3f]/20"></div>
+          </div>
+
+          {/* Demais membros da equipe */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 max-w-[900px] mx-auto">
             {/* Jaqueline */}
-            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
-              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+            <div className="text-center">
+              <div className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-full mx-auto mb-3 overflow-hidden border-2 border-[#1a2b3f]/20">
                 <img src="/jaqueline_logo.png" alt="Jaqueline Ezídio" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">Jaqueline Ezídio</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">Diretora Administrativa</p>
+              <h4 className="font-bold text-base md:text-lg mb-1 text-[#1a2b3f]">Jaqueline Ezídio</h4>
+              <p className="text-gray-600 font-normal text-sm">Diretora Administrativa</p>
             </div>
 
             {/* André */}
-            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
-              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+            <div className="text-center">
+              <div className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-full mx-auto mb-3 overflow-hidden border-2 border-[#1a2b3f]/20">
                 <img src="/andre_logo.png" alt="André Calcagno" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">André Calcagno</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">Diretor de RH</p>
+              <h4 className="font-bold text-base md:text-lg mb-1 text-[#1a2b3f]">André Calcagno</h4>
+              <p className="text-gray-600 font-normal text-sm">Diretor de RH</p>
             </div>
 
             {/* João */}
-            <div className="w-full max-w-[320px] sm:max-w-[250px] bg-[#f8f9fa] rounded-lg p-6 md:p-8 shadow-md text-center mx-auto">
-              <div className="w-[160px] h-[160px] md:w-[200px] md:h-[200px] bg-[#f0f0f0] rounded-full mx-auto mb-4 flex items-center justify-center overflow-hidden">
+            <div className="text-center">
+              <div className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-full mx-auto mb-3 overflow-hidden border-2 border-[#1a2b3f]/20">
                 <img src="/joao_logo.jpeg" alt="João Pedro Sanglard" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-bold mb-1 md:mb-2 text-[#1a2b3f]">João Pedro Sanglard</h3>
-              <p className="text-gray-600 font-normal text-sm md:text-base">Gerente T.I.</p>
+              <h4 className="font-bold text-base md:text-lg mb-1 text-[#1a2b3f]">João Pedro Sanglard</h4>
+              <p className="text-gray-600 font-normal text-sm">Gerente T.I.</p>
             </div>
           </div>
         </div>
