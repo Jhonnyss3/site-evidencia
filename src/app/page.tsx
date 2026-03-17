@@ -866,7 +866,7 @@ export default function Home() {
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
           {/* Logo */}
           <div className="flex justify-center mb-8 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.1s_forwards]">
-            <img src="/logo.png" alt="Logo Evidência" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Logo Evidência" className="h-24 md:h-32 w-auto" />
           </div>
 
           <h2 className="text-3xl md:text-4xl mb-4 font-bold text-[#da412c] opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">Entre em Contato</h2>
@@ -887,7 +887,7 @@ export default function Home() {
             </a>
           </div>
 
-          {/* Infos de contato com ícones */}
+          {/* Telefone e Email com ícones */}
           <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
             {/* Telefone */}
             <div className="flex flex-col items-center gap-2 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
@@ -907,6 +907,18 @@ export default function Home() {
                 </svg>
               </div>
               <a href="mailto:contato@contabilidade.com.br" className="text-sm text-gray-600 hover:text-[#da412c] transition-colors">contato@contabilidade.com.br</a>
+            </div>
+          </div>
+
+          {/* Divisor + Endereço */}
+          <div className="mt-10 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.8s_forwards]">
+            <div className="w-full max-w-[400px] mx-auto h-px bg-[#1a2b3f]/20 mb-6"></div>
+            <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
+              <svg className="w-4 h-4 text-[#da412c] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span>Rua 40, Shopping 33 - Torre 3 - Sala 1211 - Vila Santa Cecília, Volta Redonda/RJ</span>
             </div>
           </div>
         </div>
