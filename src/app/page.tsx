@@ -156,7 +156,7 @@ export default function Home() {
             className="w-full h-[50vh] lg:h-auto opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_forwards]"
           >
             <img
-              src="/about.jpg"
+              src="/about2.jpeg"
               alt="Equipe da Evidência Assessoria Contábil"
               className="w-full h-full object-cover"
             />
@@ -184,9 +184,9 @@ export default function Home() {
                 A Evidência Assessoria Contábil acredita que a contabilidade deve ser uma ferramenta de gestão, não apenas uma obrigação fiscal.
                 Seu papel é traduzir os números com clareza e proximidade, ajudando o empresário a ter tranquilidade, segurança e performance em todas as etapas do seu negócio.
               </p>
-
+              
               {/* Estatísticas - Versão minimalista */}
-              <div className="flex flex-wrap gap-8 md:gap-12">
+              {/* <div className="flex flex-wrap gap-8 md:gap-12">
                 <div className="group">
                   <div className="text-3xl md:text-4xl font-bold text-[#da412c] mb-1">
                     <span data-counter="15" className="has-plus">0+</span>
@@ -205,9 +205,9 @@ export default function Home() {
                   </div>
                   <div className="text-sm md:text-base text-gray-600">Comprometimento</div>
                 </div>
-              </div>
+              </div> */}
             </div>
-
+            
             {/* MVV - Versão sofisticada com mais destaque */}
             <div className="opacity-0 [.animate-about_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
               <div className="border-t border-[#1a2b3f]/20 pt-8">
@@ -733,7 +733,7 @@ export default function Home() {
               {/* Marcelo */}
               <div className="text-center">
                 <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
-                  <img src="/marcelo_logo.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
+                  <img src="/marcelo_logo2.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Marcelo Carvalho</h4>
                 <p className="text-gray-600 font-normal text-sm md:text-base">CRC: XXXXX</p>
@@ -743,7 +743,7 @@ export default function Home() {
               {/* Fábio */}
               <div className="text-center">
                 <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
-                  <img src="/fabio_logo.png" alt="Fábio Silva" className="w-full h-full object-cover" />
+                  <img src="/fabio_logo2.png" alt="Fábio Silva" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Fábio Silva</h4>
                 <p className="text-gray-600 font-normal text-sm md:text-base">Diretor Financeiro</p>
