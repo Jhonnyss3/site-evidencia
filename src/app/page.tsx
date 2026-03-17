@@ -109,11 +109,31 @@ export default function Home() {
       faqObserver.observe(faqSection);
     }
 
+    // Observer para Contact (repete ao sair e voltar)
+    const contactObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-contact');
+          } else {
+            entry.target.classList.remove('animate-contact');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactObserver.observe(contactSection);
+    }
+
     return () => {
       heroObserver.disconnect();
       aboutObserver.disconnect();
       servicesObserver.disconnect();
-      faqObserver.disconnect(); // Limpar observer
+      faqObserver.disconnect();
+      contactObserver.disconnect();
     };
   }, []);
 
@@ -156,7 +176,7 @@ export default function Home() {
             className="w-full h-[50vh] lg:h-auto opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_forwards]"
           >
             <img
-              src="/about2.jpeg"
+              src="/about3.jpeg"
               alt="Equipe da Evidência Assessoria Contábil"
               className="w-full h-full object-cover"
             />
@@ -493,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" aria-label="Perguntas Frequentes" className="bg-[#e4e4e4] py-16 md:py-20 font-sans overflow-hidden">
+      <section id="faq" aria-label="Perguntas Frequentes" className="bg-[#ffffff] py-16 md:py-20 font-sans overflow-hidden">
         <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
           {/* Título principal centralizado */}
           <div className="text-center mb-12 md:mb-16 opacity-0 [.animate-faq_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">
@@ -730,23 +750,22 @@ export default function Home() {
           <div className="mb-12 md:mb-16">
             <h3 className="text-[#1a2b3f] text-2xl md:text-3xl font-bold text-center mb-8">Sócios</h3>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-              {/* Marcelo */}
-              <div className="text-center">
-                <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
-                  <img src="/marcelo_logo2.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
-                </div>
-                <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Marcelo Carvalho</h4>
-                <p className="text-gray-600 font-normal text-sm md:text-base">CRC: XXXXX</p>
-                <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
-              </div>
-
               {/* Fábio */}
               <div className="text-center">
                 <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
                   <img src="/fabio_logo2.png" alt="Fábio Silva" className="w-full h-full object-cover" />
                 </div>
                 <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Fábio Silva</h4>
-                <p className="text-gray-600 font-normal text-sm md:text-base">Diretor Financeiro</p>
+                <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
+              </div>
+
+              {/* Marcelo */}
+              <div className="text-center">
+                <div className="w-[140px] h-[140px] md:w-[180px] md:h-[180px] rounded-full mx-auto mb-4 overflow-hidden border-4 border-[#da412c]">
+                  <img src="/marcelo_logo2.png" alt="Marcelo Carvalho" className="w-full h-full object-cover" />
+                </div>
+                <h4 className="font-bold text-lg md:text-xl mb-1 text-[#1a2b3f]">Marcelo Carvalho</h4>
+                <p className="text-gray-600 font-normal text-sm md:text-base">Contador Responsável</p>
               </div>
             </div>
           </div>
@@ -761,7 +780,7 @@ export default function Home() {
             {/* Jaqueline */}
             <div className="text-center">
               <div className="w-[120px] h-[120px] md:w-[140px] md:h-[140px] rounded-full mx-auto mb-3 overflow-hidden border-2 border-[#1a2b3f]/20">
-                <img src="/jaqueline_logo.png" alt="Jaqueline Ezídio" className="w-full h-full object-cover" />
+                <img src="/jaqueline_logo2.png" alt="Jaqueline Ezídio" className="w-full h-full object-cover" />
               </div>
               <h4 className="font-bold text-base md:text-lg mb-1 text-[#1a2b3f]">Jaqueline Ezídio</h4>
               <p className="text-gray-600 font-normal text-sm">Diretora Administrativa</p>
@@ -838,36 +857,56 @@ export default function Home() {
         }}
       />    
 
-      {/* Contact Section com parallax (bg-fixed em md+) */}
+      {/* Contact Section */}
       <section
         id="contact"
         aria-label="Contato"
-        className="relative text-white text-center py-16 md:py-20 font-sans bg-[url('/contact_bg.png')] bg-cover bg-center md:bg-fixed overflow-hidden"
+        className="bg-[#e4e4e4] text-center py-24 md:py-32 font-sans"
       >
-        {/* Overlay para leitura */}
-        <div className="absolute inset-0 bg-[#1a2b3f]/80"></div>
+        <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8">
+          {/* Logo */}
+          <div className="flex justify-center mb-8 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.1s_forwards]">
+            <img src="/logo.png" alt="Logo Evidência" className="h-12 w-auto" />
+          </div>
 
-        <div className="relative w-full max-w-[1200px] mx-auto px-4 sm:px-6 md:px-8 z-10">
-          <h2 className="text-3xl md:text-4xl mb-4 font-bold">Entre em Contato</h2>
-          <p className="text-sm sm:text-base mb-8 md:mb-10 font-normal">
+          <h2 className="text-3xl md:text-4xl mb-4 font-bold text-[#da412c] opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.2s_forwards]">Entre em Contato</h2>
+          <div className="w-24 h-1 bg-[#1a2b3f] mb-6 mx-auto opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.3s_forwards]"></div>
+          <p className="text-sm sm:text-base mb-10 font-normal text-[#1a2b3f] max-w-[600px] mx-auto opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.4s_forwards]">
             Converse com a Evidência Assessoria Contábil e descubra como podemos simplificar sua rotina contábil e impulsionar seus resultados.
           </p>
-          <a
-            href={wppLink}
-            className={`${ctaButton} w-full sm:w-auto`}
-            style={{ overflow: 'hidden' }}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Conversar pelo WhatsApp
-          </a>
-          <div className="mt-8 text-sm md:text-base text-[#d1d5db] font-normal space-y-2 md:space-y-0 md:space-x-2">
-            <div className="flex flex-col md:flex-row items-center justify-center gap-2">
-              <span>Rua Exemplo, 123 - Volta Redonda/RJ</span>
-              <span className="hidden md:inline">|</span>
-              <a href="tel:+552433334444" className="hover:underline">(24) 3333-4444</a>
-              <span className="hidden md:inline">|</span>
-              <a href="mailto:contato@contabilidade.com.br" className="hover:underline">contato@contabilidade.com.br</a>
+
+          <div className="opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.5s_forwards]">
+            <a
+              href={wppLink}
+              className={`${ctaButton} w-full sm:w-auto`}
+              style={{ overflow: 'hidden' }}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar pelo WhatsApp
+            </a>
+          </div>
+
+          {/* Infos de contato com ícones */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-8">
+            {/* Telefone */}
+            <div className="flex flex-col items-center gap-2 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.6s_forwards]">
+              <div className="w-10 h-10 rounded-full bg-[#da412c] flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <a href="tel:+552433334444" className="text-sm text-gray-600 hover:text-[#da412c] transition-colors">(24) 3333-4444</a>
+            </div>
+
+            {/* Email */}
+            <div className="flex flex-col items-center gap-2 opacity-0 [.animate-contact_&]:animate-[fadeInUp_1s_ease-out_0.7s_forwards]">
+              <div className="w-10 h-10 rounded-full bg-[#da412c] flex items-center justify-center">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <a href="mailto:contato@contabilidade.com.br" className="text-sm text-gray-600 hover:text-[#da412c] transition-colors">contato@contabilidade.com.br</a>
             </div>
           </div>
         </div>
