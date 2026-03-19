@@ -176,7 +176,7 @@ export default function Home() {
             className="w-full h-[50vh] lg:h-auto opacity-0 [.animate-about_&]:animate-[slideInLeft_1s_ease-out_forwards]"
           >
             <img
-              src="/about3.jpeg"
+              src="/about.jpg"
               alt="Equipe da Evidência Assessoria Contábil"
               className="w-full h-full object-cover"
             />
@@ -504,7 +504,7 @@ export default function Home() {
           {/* Imagem - Metade direita */}
           <div className="w-full h-[50vh] lg:h-auto order-1 lg:order-2 opacity-0 [.animate-services_&]:animate-[slideInRight_1s_ease-out_forwards]">
             <img
-              src="/service_banner.jpeg"
+              src="/service_banner2.jpeg"
               alt="Serviços da Evidência Assessoria Contábil"
               className="w-full h-full object-cover"
             />
