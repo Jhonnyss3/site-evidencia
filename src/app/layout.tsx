@@ -1,26 +1,26 @@
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import Header from './header'; 
 
-export const metadata = {
-  title: 'Contabilidade - Site Institucional',
-  description: 'Soluções contábeis completas para sua empresa.',
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Evidência Assessoria Contábil — Em breve',
+  description:
+    'Em breve o site da Evidência Assessoria Contábil estará disponível. Entre em contato pelo e-mail ou WhatsApp.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR" className={inter.className}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
-      <body className="font-sans bg-white text-[#1a2b3f] antialiased">
-        <Header />
-        <main>{children}</main>
-        <footer className="bg-[#e4e4e4] text-[#1a2b3f] text-center py-8 border-t-4 border-[#da412c] font-sans">
-          <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 md:px-8">
-            <p className="text-sm sm:text-base">&copy; 2026 Evidência Assessoria Contábil. Todos os direitos reservados.</p>
-          </div>
-        </footer>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
